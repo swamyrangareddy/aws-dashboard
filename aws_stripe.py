@@ -24,9 +24,10 @@ class Dashboard:
                 "revenue": "KPI_Revenue_total_counts.csv", 
                 "customers": "customers_6months.csv", 
                 "subscriptions": "subscriptions_6months.csv", 
-                "payment": "charges_data.csv",
+                "payment": "payments_outcome_data.csv",
                 "financial": "financial.csv", 
-                "customer_metadata": "customers_metadata.csv"  
+                "customer_metadata": "customers_metadata.csv",
+                "charges" : "charges_data.csv"
             }}
     
     def load_data_from_s3(self, file_key):
@@ -329,7 +330,7 @@ class Dashboard:
     def Revenue(self):
         # Use Streamlit's markdown function to add a style tag to hide the Streamlit element toolbar
         revenue_df = self.load_data_from_s3('revenue')
-        payment_df = self.load_data_from_s3('payment')
+        charges_df = self.load_data_from_s3('charges')
 
         # Sidebar
         st.sidebar.header("Select Date Range:")
@@ -439,8 +440,8 @@ class Dashboard:
             st.info('Revenue by Products')
             st.metric(label="", value=f"$ {revenue_from_products:,.2f}")
         
-        revenue_by_new_sub = payments_df[~payments_df['charge_description'].str.contains("Subscription update", na=False)]['charge_amount'].sum()
-        revenue_by_renewed_sub =  payments_df[payments_df['charge_description'].str.contains("Subscription update", na=False)]['charge_amount'].sum()
+        revenue_by_new_sub = charges_df[~charges_df['charge_description'].str.contains("Subscription update", na=False)]['charge_amount'].sum()
+        revenue_by_renewed_sub =  charges_df[charges_df['charge_description'].str.contains("Subscription update", na=False)]['charge_amount'].sum()
         
         total1, total2 = st.columns(2, gap='small')
         with total1:
