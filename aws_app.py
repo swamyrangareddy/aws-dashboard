@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 from aws_braintap import BraninTapApp
-from aws_braintap import Dashboard
+from aws_stripe import Dashboard
 
 # Configure the Streamlit page layout and settings
 st.set_page_config(
