@@ -21,12 +21,12 @@ class Dashboard:
         self.s3_config = {
             "bucket_name": "my-s3-dashboard",
             "files": {
-                "revenue": "s3://my-s3-dashboard/KPI_Revenue_total_counts.csv",
-                "customers": "s3://my-s3-dashboard/customers_6months.csv",
-                "subscriptions": "s3://my-s3-dashboard/subscriptions_6months.csv",
-                "payment": "s3://my-s3-dashboard/payments_outcome_data.csv",
-                "financial": "s3://my-s3-dashboard/financial.csv",
-                "customer_metadata" :"s3://my-s3-dashboard/customers_metadata.csv"
+                "revenue": "my-s3-dashboard/KPI_Revenue_total_counts.csv",
+                "customers": "my-s3-dashboard/customers_6months..csv",
+                "subscriptions": "my-s3-dashboard/subscriptions_6months.csv",
+                "payment": "my-s3-dashboard/payments_outcome_data.csv",
+                "financial": "my-s3-dashboard/financial.csv",
+                "customer_metadata" :"my-s3-dashboard/customers_metadata.csv"
             }}
     
     def load_data_from_s3(self, file_key):
