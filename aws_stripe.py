@@ -331,6 +331,7 @@ class Dashboard:
         # Use Streamlit's markdown function to add a style tag to hide the Streamlit element toolbar
         revenue_df = self.load_data_from_s3('revenue')
         charges_df = self.load_data_from_s3('charges')
+        charges_df.columns = charges_df.columns.str.replace(r'charge_', '')
 
         # Sidebar
         st.sidebar.header("Select Date Range:")
